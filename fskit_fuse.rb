@@ -8,7 +8,7 @@ class Fskit < Formula
 
   depends_on "pkg-config" => :build
   depends_on :osxfuse
-  depends_on :fskit
+  depends_on "fskit"
 
   def install
     ENV.append "LIBS", "-losxfuse"
