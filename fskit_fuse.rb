@@ -1,4 +1,4 @@
-class Fskit < Formula
+class FskitFuse < Formula
   desc "Batteries-Included Filesystems"
   homepage "https://github.com/jcnelson/fskit"
 
