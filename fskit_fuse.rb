@@ -7,12 +7,16 @@ class FskitFuse < Formula
   end
 
   depends_on "pkg-config" => :build
-  depends_on :osxfuse
   depends_on "fskit"
+  depends_on :osxfuse
 
   def install
+    # ENV.append "LIBS", "-losxfuse", "`pkg-config --libs enchant`.chomp"
     ENV.append "LIBS", "-losxfuse"
-    #, "`pkg-config --libs enchant`.chomp"
     system "make", "-C", "fuse", "PREFIX=#{prefix}", "install"
+  end
+
+  test do
+    system "make", "-C", "test"
   end
 end
