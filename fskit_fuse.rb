@@ -1,3 +1,6 @@
+# typed: false
+# frozen_string_literal: true
+
 class FskitFuse < Formula
   desc "Batteries-Included Filesystems"
   homepage "https://github.com/jcnelson/fskit"
@@ -8,7 +11,14 @@ class FskitFuse < Formula
 
   depends_on "pkg-config" => :build
   depends_on "fskit"
-  depends_on :osxfuse
+
+  on_macos do
+    disable! date: "2021-05-19", because: "requires FUSE"
+  end
+
+  on_linux do
+    depends_on "libfuse"
+  end
 
   def install
     # ENV.append "LIBS", "-losxfuse", "`pkg-config --libs enchant`.chomp"
